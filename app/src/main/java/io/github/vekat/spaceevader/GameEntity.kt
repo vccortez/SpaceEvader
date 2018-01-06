@@ -5,13 +5,22 @@ import android.graphics.Paint
 import android.graphics.RectF
 
 interface GameEntity {
-    val rect: RectF
+    val positionRect: RectF
+    val displayRect: RectF
 
-    infix fun intersects(other: GameEntity): Boolean = RectF.intersects(this.rect, other.rect)
+    infix fun intersects(other: GameEntity): Boolean = RectF.intersects(this.positionRect, other.positionRect)
 
-    fun offsetTo(x: Float = rect.left, y: Float = rect.top) = rect.offsetTo(x, y)
+    fun offsetTo(x: Float = positionRect.left, y: Float = positionRect.top) {
+        positionRect.offsetTo(x, y)
+    }
 
-    fun offset(dx: Float = 0f, dy: Float = 0f) = rect.offset(dx, dy)
+    fun offset(dx: Float = 0f, dy: Float = 0f) {
+        positionRect.offset(dx, dy)
+    }
+
+    fun offsetDisplay(dx: Float = 0f, dy: Float = 0f) {
+        displayRect.offsetTo(dx, dy)
+    }
 
     fun update(delta: Float) = Unit
 
