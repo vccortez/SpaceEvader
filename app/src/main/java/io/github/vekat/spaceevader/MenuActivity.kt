@@ -1,5 +1,6 @@
 package io.github.vekat.spaceevader
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
@@ -8,11 +9,11 @@ class MenuActivity : AppCompatActivity() {
 
     private val listener: IMenuEventListener = object : IMenuEventListener {
         override fun onStartGame() {
-            // TODO: start game activity
+            this@MenuActivity.startActivity(Intent(this@MenuActivity, GameActivity::class.java))
         }
 
         override fun onCloseGame() {
-            // TODO: close menu activity
+            this@MenuActivity.finish()
         }
     }
 
