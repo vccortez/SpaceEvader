@@ -19,7 +19,8 @@ interface GameEntity {
     }
 
     fun offsetDisplay(dx: Float = 0f, dy: Float = 0f) {
-        displayRect.offsetTo(dx, dy)
+        displayRect.set(positionRect)
+        displayRect.offset(dx, dy)
     }
 
     fun update(delta: Float) = Unit

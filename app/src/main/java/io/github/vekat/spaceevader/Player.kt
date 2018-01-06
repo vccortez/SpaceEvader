@@ -13,8 +13,8 @@ class Player(unit: Int) : GameEntity {
 
     var movement = NONE
 
-    private val width: Float = unit * 4f
-    private val height: Float = unit * 2f
+    val width: Float = unit * 4f
+    val height: Float = unit * 2f
 
     private val velocity: Float = 250f
 
@@ -29,8 +29,6 @@ class Player(unit: Int) : GameEntity {
     }
 
     override fun draw(delta: Float, alpha: Float, canvas: Canvas, paint: Paint) {
-        displayRect.set(positionRect)
-
         when (movement) {
             LEFT -> offsetDisplay(-velocity * delta * alpha)
             RIGHT -> offsetDisplay(+velocity * delta * alpha)
