@@ -10,6 +10,7 @@ import android.os.HandlerThread
 import android.view.Display
 import android.view.MotionEvent
 import android.view.SurfaceView
+import kotlin.math.sin
 import java.util.*
 
 class GameView(context: Context, display: Display) : SurfaceView(context), Runnable {
@@ -235,5 +236,11 @@ class GameView(context: Context, display: Display) : SurfaceView(context), Runna
 
     private fun updateTouchX(motionEventX: Float) {
         touchXRatio = motionEventX / screenWidth
+    }
+
+    private fun atualizarEixo(azimuth: Float) {
+        val seno = sin(azimuth)
+
+        touchXRatio = (1 + seno) / 2
     }
 }

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.widget.RelativeLayout
 import kotlinx.android.synthetic.main.view_menu.view.*
+import kotlin.math.sin
 
 import io.github.vekat.spaceevader.MenuActivity.IMenuEventListener
 
@@ -101,4 +102,11 @@ class MenuView(context: Context, display: Display, val listener: IMenuEventListe
         }
     }
 
+    private fun atualizarEixo(azimuth: Float) {
+        val seno = sin(azimuth)
+
+        xRelativeToWidth = seno
+
+        updateView()
+    }
 }
