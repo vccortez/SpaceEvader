@@ -1,7 +1,7 @@
 package io.github.vekat.spaceevader
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 
 class GameActivity : AppCompatActivity() {
     lateinit var gameView: GameView

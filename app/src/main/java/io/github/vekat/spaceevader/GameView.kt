@@ -10,8 +10,8 @@ import android.os.HandlerThread
 import android.view.Display
 import android.view.MotionEvent
 import android.view.SurfaceView
-import kotlin.math.sin
 import java.util.*
+import kotlin.math.sin
 
 class GameView(context: Context, display: Display) : SurfaceView(context), Runnable {
     private var gameThread: HandlerThread? = null
@@ -40,18 +40,6 @@ class GameView(context: Context, display: Display) : SurfaceView(context), Runna
     private val respawnQueue = object : PriorityQueue<Int>() {
         private val rand = Random()
         private var counter = 0
-        /*private val elements: MutableList<Int> = mutableListOf()
-        override fun iterator(): MutableIterator<Int> = elements.iterator()
-        override fun peek(): Int? = elements.firstOrNull()
-        override val size: Int = elements.size
-        override fun offer(e: Int): Boolean = elements.add(e)
-        override fun poll(): Int? {
-            val elem = elements.firstOrNull()
-            if (elem != null) {
-                elements.
-            }
-            return elem
-        }*/
 
         fun respawn() {
             if (counter++ % RESPAWN_RATE == 0) {
@@ -67,7 +55,6 @@ class GameView(context: Context, display: Display) : SurfaceView(context), Runna
     }
 
     private var score = 0
-
     private var lives = 3
 
     init {
@@ -84,6 +71,8 @@ class GameView(context: Context, display: Display) : SurfaceView(context), Runna
 
     private fun resetGameState() {
         paused = true
+        lives = 3
+        score = 0
 
         respawnQueue.clear()
 
@@ -100,9 +89,6 @@ class GameView(context: Context, display: Display) : SurfaceView(context), Runna
         }
 
         player.offsetTo((screenWidth / 2) - (player.width / 2), screenHeight - player.height)
-
-        lives = 3
-        score = 0
     }
 
     override fun run() {
@@ -149,9 +135,9 @@ class GameView(context: Context, display: Display) : SurfaceView(context), Runna
 
         player.update(dt)
 
-        enemies.filter { it.visible }.forEach { it.update(dt) }
-
         enemies.forEachIndexed { index, enemy ->
+            enemy.update(dt)
+
             if (enemy.visible && enemy intersects player) {
                 enemy.visible = false
                 respawnQueue.offer(index)

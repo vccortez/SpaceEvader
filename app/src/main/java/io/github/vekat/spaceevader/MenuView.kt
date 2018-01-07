@@ -6,12 +6,11 @@ import android.view.Display
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.widget.RelativeLayout
+import io.github.vekat.spaceevader.MenuActivity.IMenuEventListener
 import kotlinx.android.synthetic.main.view_menu.view.*
 import kotlin.math.sin
 
-import io.github.vekat.spaceevader.MenuActivity.IMenuEventListener
-
-class MenuView(context: Context, display: Display, val listener: IMenuEventListener) : RelativeLayout(context) {
+class MenuView(context: Context, display: Display, private val listener: IMenuEventListener) : RelativeLayout(context) {
     private var screenWidth: Int
     private var screenHeight: Int
 
