@@ -88,12 +88,12 @@ class MenuActivityTest {
 
         val beforeEvents = view.xRelativeToWidth
 
-        val viewListener = listeners.first()
+        val viewListener = listeners.firstOrNull()
 
         assertNotNull(viewListener)
 
-        viewListener.onSensorChanged(accelerometerEvent)
-        viewListener.onSensorChanged(magnetometerEvent)
+        viewListener?.onSensorChanged(accelerometerEvent)
+        viewListener?.onSensorChanged(magnetometerEvent)
 
         assertNotEquals("Should be different", beforeEvents, view.xRelativeToWidth)
 
