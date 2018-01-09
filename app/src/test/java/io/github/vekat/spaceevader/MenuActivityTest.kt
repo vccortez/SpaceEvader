@@ -4,9 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.view.MotionEvent
-import org.junit.Assert.assertEquals
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -62,6 +63,7 @@ class MenuActivityTest {
         assertEquals(expectedIntent.component, actualIntent.component)
     }
 
+    @Suppress("UNCHECKED_CAST")
     @Test
     fun shouldStartGameActivityWithSensor() {
         val accelerometerEvent = shadowSensorManager.createSensorEvent()
@@ -79,14 +81,21 @@ class MenuActivityTest {
         valuesField.set(accelerometerEvent, floatArrayOf(0f, 0f, 10f))
         valuesField.set(magnetometerEvent, floatArrayOf(50f, 50f, 0f))
 
+        val listenersField = ShadowSensorManager::class.java.getDeclaredField("listeners")
+        listenersField.isAccessible = true
+
+        val listeners = listenersField.get(shadowSensorManager) as List<SensorEventListener>
+
         val beforeEvents = view.xRelativeToWidth
-        println(beforeEvents)
 
-        view.onSensorChanged(accelerometerEvent)
-        view.onSensorChanged(magnetometerEvent)
+        val viewListener = listeners.first()
 
-        println(view.xRelativeToWidth)
-        assertEquals("Should be different",true, beforeEvents != view.xRelativeToWidth)
+        assertNotNull(viewListener)
+
+        viewListener.onSensorChanged(accelerometerEvent)
+        viewListener.onSensorChanged(magnetometerEvent)
+
+        assertNotEquals("Should be different", beforeEvents, view.xRelativeToWidth)
 
         view.performClick()
 
