@@ -29,7 +29,7 @@ class GameView(context: Context, display: Display) : SurfaceView(context), Runna
     private var screenWidth: Int = 0
     private var screenHeight: Int = 0
 
-    private var touchXRatio: Float = 0.5f
+    var touchXRatio: Float = 0.5f
     private var playerXRatio: Float = 0f
 
     private var player = Player(unit)
