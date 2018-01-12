@@ -5,7 +5,7 @@ Para implementar essa funcionalidade, duas APIs serão utilizadas: A API da bibl
 Durante a prática, os participantes podem utilizar recursos online, como a documentação das respectivas APIs, bem como os documentos de treinamento de cada API: [treinamento-android](treinamento-android.md) e [treinamento-gamepad](treinamento-gamepad.md).
 
 A sequência de passos a ser executada no projeto **SpaceEvader** é apresenta a seguir nesse documento.
-Além disso, o código fonte inicial do projeto apresenta comentários (`// TODO: ...`) indicando qual passo precisa ser implementado, e o projeto contém um conjunto de *testes de unidade* que podem ser executados a qualquer momento do experimento para verificar o progresso da implementação.
+Além disso, o código fonte inicial do projeto apresenta comentários (`// TODO: ...`) indicando qual passo precisa ser implementado, e o projeto contém um conjunto de *testes de unidade* que podem ser executados em qualquer momento da atividade prática para verificar o progresso da implementação.
 
 #### Tela do menu principal
 
