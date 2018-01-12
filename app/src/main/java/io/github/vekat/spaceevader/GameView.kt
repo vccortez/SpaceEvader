@@ -13,7 +13,15 @@ import android.view.SurfaceView
 import java.util.*
 import kotlin.math.sin
 
+// TODO: passo 8 - adicione a interface apropriada na assinatura da classe `MenuView`.
+
+/**
+ * A view que declara e controla a animação do jogo.
+ */
 class GameView(context: Context, display: Display) : SurfaceView(context), Runnable {
+
+    // TODO: passo 12 - implemente no callback da interface utilizada o procedimento para obter a orientação.
+
     private var gameThread: HandlerThread? = null
     private var gameHandler: Handler? = null
 
