@@ -29,7 +29,7 @@ class SensorActivity : AppCompatActivity() {
 #### 2. Adicionando a interface SensorEventListener
 
 A API padrão precisa de uma implementação da interface `SensorEventListener`.
-Essa interface possui dois métodos **callback** (`onAccuracyChanged()` e `onSensorChanged`) que serão chamados sempre que novos dados forem capturados pelos sensores registrados.
+Essa interface possui dois métodos **callback** (`onAccuracyChanged()` e `onSensorChanged()`) que serão chamados sempre que novos dados forem capturados pelos sensores registrados.
 Apenas o método `onSensorChanged()` retorna as leituras dos sensores, sendo o **callback** mais importante para o nosso caso. 
 
 Normalmente, essa interface é implementada pela classe que quer utilizar os dados dos sensores, como por exemplo, uma `View`.
@@ -79,7 +79,7 @@ No entanto, os sensores **acelerômetro** (`Sensor.TYPE_ACCELEROMETER`) e **magn
 
 Após a inicialização do `SensorManager` e dos sensores escolhidos, é necessário chamar o método `registerListener()` para ativar o recebimento de eventos.
 Além disso, também é indicado desativar o recebimento de eventos com o método `unregisterListener()` quando a `Activity` não estiver sendo utilizada.
-O local ideal para realizar esses procedimentos são os métodos `onResume()` e `onPause` do ciclo de vida de uma `Activity`, como exemplificado a seguir:
+O local ideal para realizar esses procedimentos são os métodos `onResume()` e `onPause()` do ciclo de vida de uma `Activity`, como exemplificado a seguir:
 
 ````kotlin
 // Exemplo dentro de uma activity chamada `SensorActivity`
@@ -136,6 +136,9 @@ Ambos os sensores retornam 3 valores, correspondendo aos eixos X, Y e Z.
 
 ````kotlin
 class OrientationActivity : AppCompatActivity() {
+  // View principal da activity
+  lateinit var orientationView: OrientationView
+
   // Declare um SensorManager para administrar os sensores
   lateinit var sensorManager: SensorManager
   // Declare um Sensor para o acelerômetro
@@ -146,8 +149,13 @@ class OrientationActivity : AppCompatActivity() {
   // No método onCreate, o manager e o sensor são inicializados
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+    
+    // Inicialização da view
+    orientationView = OrientationView(this)
+    
+    setContentView(orientationView)
 
+    // Inicialização do `SensorManager` e sensores
     sensorManager = getSystemService(Context.SENSOR_SERVICE)
 
     sensorAcc = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
@@ -159,8 +167,8 @@ class OrientationActivity : AppCompatActivity() {
     super.onResume()
 
     // A partir desse momento, é possível receber eventos
-    sensorManager.registerListener(this, sensorAcc, SensorManager.SENSOR_DELAY_GAME)
-    sensorManager.registerListener(this, sensorMag, SensorManager.SENSOR_DELAY_GAME)
+    sensorManager.registerListener(orientationView, sensorAcc, SensorManager.SENSOR_DELAY_GAME)
+    sensorManager.registerListener(orientationView, sensorMag, SensorManager.SENSOR_DELAY_GAME)
   }
 
   // No método onPause, o SensorEventListener é removido
@@ -168,7 +176,7 @@ class OrientationActivity : AppCompatActivity() {
     super.onPause()
 
     // A partir desse momento, não é possível receber eventos
-    sensorManager.unregisterListener(this)
+    sensorManager.unregisterListener(orientationView)
   }
 }
 ````
