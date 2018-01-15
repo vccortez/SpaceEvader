@@ -50,7 +50,7 @@ class ExemploView(context: Context): View(context), SensorEventListener {
 
 #### 3. Inicializando o SensorManager e Sensors 
 
-Como mencionado na **seção #1**, somente é possível obter instâncias de `SensorManager` e `Sensor` quando o contexto da aplicação for devidamente inicializado.
+Como mencionado na [seção 1](1-declarando-as-variáveis-sensormanager-e-sensors), somente é possível obter instâncias de `SensorManager` e `Sensor` quando o contexto da aplicação for devidamente inicializado.
 Dessa forma, a inicialização das variáveis declaradas na primeira seção desse documento é realizada no método `onCreate()` da seguinte forma:
 
 ````kotlin

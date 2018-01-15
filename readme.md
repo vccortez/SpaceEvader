@@ -11,44 +11,44 @@ Além disso, o código fonte inicial do projeto apresenta comentários (`// TODO
 
 Dentro do arquivo `MenuActivity.kt`:
 
-1. **Declare as variáveis** necessárias para receber os dados sobre a **orientação** do dispositivo móvel [seção #1];
+1. **Declare as variáveis** necessárias para receber os dados sobre a **orientação** do dispositivo móvel (seção 1);
 
 Dentro do arquivo `MenuView.kt`:
 
-2. **Adicione** na classe `MenuView` **a interface** que habilita o recebimento **de eventos** dos sensores por meio de um *método callback* [seção #2];
+2. **Adicione** na classe `MenuView` **a interface** que habilita o recebimento **de eventos** dos sensores por meio de um *método callback* (seção 2);
 
 De volta ao arquivo `MenuActivity.kt`:
 
-3. **Inicialize e configure** as variáveis declaradas no *passo #1* dentro do método `onCreate()` da classe `MenuActivity` [seção #3];
+3. **Inicialize e configure** as variáveis declaradas no *passo #1* dentro do método `onCreate()` da classe `MenuActivity` (seção 3);
 
-4. Adicione o método `onResume()` e implemente os procedimentos necessários para **iniciar o recebimento de eventos** [seção #4];
+4. Adicione o método `onResume()` e implemente os procedimentos necessários para **iniciar o recebimento de eventos** (seção 4);
 
-5. Adicione o método `onPause()` e implemente os procedimentos necessários para **cancelar o recebimento de eventos** [seção #4];
+5. Adicione o método `onPause()` e implemente os procedimentos necessários para **cancelar o recebimento de eventos** (seção 4);
 
 Dentro do arquivo `MenuView.kt`:
 
-6. **Implemente** dentro do **método callback** da interface adicionada no *passo #2* os procedimentos necessários **para obter** o vetor com **a orientação** do dispositivo, e utilize o **primeiro valor do vetor** (*azimuth*) como argumento para chamar o método `atualizarEixo()` [seção #5].
+6. **Implemente** dentro do **método callback** da interface adicionada no *passo #2* os procedimentos necessários **para obter** o vetor com **a orientação** do dispositivo, e utilize o **primeiro valor do vetor** (*azimuth*) como argumento para chamar o método `atualizarEixo()` (seção 5).
 
 #### Tela do jogo
 
 Dentro do arquivo `GameActivity.kt`:
 
-7. **Declare as variáveis** necessárias para receber os dados sobre a **orientação** do dispositivo móvel [seção #1];
+7. **Declare as variáveis** necessárias para receber os dados sobre a **orientação** do dispositivo móvel (seção 1);
 
 Dentro do arquivo `GameView.kt`:
 
-8. **Adicione** na classe `GameView` **a interface** que habilita o recebimento **de eventos** dos sensores por meio de um *método callback* [seção #2];
+8. **Adicione** na classe `GameView` **a interface** que habilita o recebimento **de eventos** dos sensores por meio de um *método callback* (seção 2);
 
 De volta ao arquivo `GameActivity.kt`:
 
-9. **Inicialize e configure** as variáveis declaradas no *passo #7* dentro do método `onCreate()` da classe `GameActivity` [seção #3];
+9. **Inicialize e configure** as variáveis declaradas no *passo #7* dentro do método `onCreate()` da classe `GameActivity` (seção 3);
 
-10. Implemente no método `onResume()` os procedimentos necessários para **iniciar o recebimento de eventos** [seção #4];
+10. Implemente no método `onResume()` os procedimentos necessários para **iniciar o recebimento de eventos** (seção 4);
 
-11. Implemente no método `onPause()` os procedimentos necessários para **cancelar o recebimento de eventos** [seção #4];
+11. Implemente no método `onPause()` os procedimentos necessários para **cancelar o recebimento de eventos** (seção 4);
 
 Dentro do arquivo `GameView.kt`:
 
-12. **Implemente** dentro do **método callback** da interface adicionada no *passo #8* os procedimentos necessários **para obter** o vetor com **a orientação** do dispositivo, e utilize o **primeiro valor do vetor** (*azimuth*) como argumento para chamar o método `atualizarEixo()` [seção #5];
+12. **Implemente** dentro do **método callback** da interface adicionada no *passo #8* os procedimentos necessários **para obter** o vetor com **a orientação** do dispositivo, e utilize o **primeiro valor do vetor** (*azimuth*) como argumento para chamar o método `atualizarEixo()` (seção 5);
 
 13. Execute os testes no pacote `io.github.vekat.spaceevader (test)` e verifique o resultado. 
