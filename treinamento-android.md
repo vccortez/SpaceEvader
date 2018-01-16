@@ -123,34 +123,37 @@ class ExemploView(context: Context): View(context), SensorEventListener {
 O sensor **acelerômetro** mede a aceleração aplicada ao dispositivo (m/s*s). Já o sensor **magnetômetro** mede os campos magnéticos do ambiente. Ambos os sensores retornam 3 valores, correspondendo aos eixos X, Y e Z. É possível combinar os dados medidos pelos dois sensores para obter a **orientação** do dispositivo móvel, por meio dos métodos `SensorManager.getOrientation()` e `SensorManager.getRotationMatrix()` da seguinte forma:
 
 ````kotlin
+// Exemplo de implementação na activity `OrientationActivity`
 class OrientationActivity : AppCompatActivity() {
-  // View principal da activity
+  // Exemplo de view principal da activity
   lateinit var view: OrientationView
 
-  // Declare um SensorManager para administrar os sensores
+  /* Declarações das variáveis necessárias (seção 1) */
+  // Um `SensorManager` para administrar os sensores
   lateinit var sensorManager: SensorManager
-  // Declare um Sensor para o acelerômetro
+  // Um `Sensor` para o acelerômetro
   lateinit var sAcc: Sensor
-  // Declare um Sensor para o magnetômetro
+  // Um `Sensor` para o magnetômetro
   lateinit var sMag: Sensor
 
-  // No método onCreate, o manager e o sensor são inicializados
+  /* No método `onCreate()`, as variáveis são inicializadas (seção 3) */
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     
-    // Inicialização da view
+    // Exemplo de inicialização da view
     view = OrientationView(this)
     
     setContentView(view)
 
-    // Inicialização do `SensorManager` e sensores
+    // Inicialização do `sensorManager`
     sensorManager = getSystemService(Context.SENSOR_SERVICE)
 
+    // Inicialização dos sensores
     sAcc = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
     sMag = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
   }
 
-  // No método onResume, o SensorEventListener é registrado
+  /* No método `onResume()`, os eventos são ativados (seção 4) */
   override fun onResume() {
     super.onResume()
 
@@ -159,7 +162,7 @@ class OrientationActivity : AppCompatActivity() {
     sensorManager.registerListener(view, sMag, SensorManager.SENSOR_DELAY_GAME)
   }
 
-  // No método onPause, o SensorEventListener é removido
+  /* No método `onPause()`, os eventos são desativados (seção 4) */
   override fun onPause() {
     super.onPause()
 
@@ -172,11 +175,13 @@ class OrientationActivity : AppCompatActivity() {
 View que implementa a interface `SensorEventListener` e processa os valores do acelerômetro e magnetômetro:
 
 ````kotlin
+/* Adicionando `SensorEventListener` na view `OrientationView` (seção 2) */
 class OrientationView(context: Context) : View(context), SensorEventListener {
   // Declare dois vetores para guardar os valores dos sensores
   var dadosAcc: FloatArray? = null
   var dadosMag: FloatArray? = null
   
+  /* Implementação do método `onSensorChanged()` (seção 5) */
   override fun onSensorChanged(event: SensorEvent?) {
     if (event != null) {
       // Descobre qual sensor enviou dados e
@@ -204,7 +209,8 @@ class OrientationView(context: Context) : View(context), SensorEventListener {
           // O primeiro valor do vetor de orientação
           // indica o 'azimuth', a direção do Norte magnético
           val direcaoNorte = orientacao[0]
-          // Faça alguma coisa com o valor da direção Norte
+
+          /* ... Use `direcaoNorte` de alguma forma ... */
         }
       }
     }
