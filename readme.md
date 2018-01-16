@@ -1,11 +1,8 @@
 # Atividade prática de programação
 
-O objetivo desta prática é adicionar ao jogo **SpaceEvader** uma forma de controlar os mecanismos do jogo por meio da orientação do dispositivo móvel.
-Para implementar essa funcionalidade, duas APIs serão utilizadas: A API da biblioteca **Gamepad**; e a API **padrão** do SDK da plataforma Android.
-Durante a prática, os participantes podem utilizar recursos online, como a documentação das respectivas APIs, bem como os documentos de treinamento de cada API: [treinamento-android](treinamento-android.md) e [treinamento-gamepad](treinamento-gamepad.md).
+O objetivo desta prática é adicionar ao jogo **SpaceEvader** uma forma de controlar os mecanismos do jogo por meio da orientação do dispositivo móvel. Para implementar essa funcionalidade, duas APIs serão utilizadas: A API da biblioteca **Gamepad**; e a API **padrão** do SDK da plataforma Android. Durante a prática, os participantes podem utilizar recursos online, como a documentação das respectivas APIs, bem como os documentos de treinamento de cada API: [treinamento-android](treinamento-android.md) e [treinamento-gamepad](treinamento-gamepad.md).
 
-A sequência de passos a ser executada no projeto **SpaceEvader** é apresenta a seguir nesse documento.
-Além disso, o código fonte inicial do projeto apresenta comentários (`// TODO: ...`) indicando qual passo precisa ser implementado, e o projeto contém um conjunto de *testes de unidade* que podem ser executados em qualquer momento da atividade prática para verificar o progresso da implementação.
+A sequência de passos a ser executada no projeto **SpaceEvader** é apresenta a seguir nesse documento. Além disso, o código fonte inicial do projeto apresenta comentários (`// TODO: ...`) indicando qual passo precisa ser implementado, e o projeto contém um conjunto de *testes de unidade* que podem ser executados em qualquer momento da atividade prática para verificar o progresso da implementação.
 
 #### Tela do menu principal
 
